@@ -33,7 +33,7 @@ export class MainMenu extends Phaser.Scene {
         const cx = this.cameras.main.centerX;
         const cy = this.cameras.main.centerY;
 
-        this.add.text(cx, cy - 80, "PATADA AL RESCATE", {
+        this.add.text(cx, cy - 80, "¡CUIDADO CON LOS BALDES!", {
             fontSize: "36px",
             color: "#ffffff",
             fontStyle: "bold",
