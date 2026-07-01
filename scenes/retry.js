@@ -1,26 +1,13 @@
-export class MainMenu extends Phaser.Scene {
+export class Retry extends Phaser.Scene {
 
     constructor() {
-        super("MainMenu");
+        super("Retry");
     }
 
     create() {
 
-        const bg = this.add.image(
-            this.cameras.main.centerX,
-            this.cameras.main.centerY,
-            "bg"
-        ).setDisplaySize(
-            this.cameras.main.width,
-            this.cameras.main.height
-        );
-
-        const rt = this.add.renderTexture(0, 0,
-            this.cameras.main.width,
-            this.cameras.main.height
-        );
-        rt.draw(bg, this.cameras.main.centerX, this.cameras.main.centerY);
-        rt.setAlpha(0); 
+        const score = this.registry.get("scoreTotal") || 0;
+        const saved = this.registry.get("savedTotal") || 0;
 
         this.add.rectangle(
             this.cameras.main.centerX,
@@ -28,36 +15,54 @@ export class MainMenu extends Phaser.Scene {
             this.cameras.main.width,
             this.cameras.main.height,
             0x000000
-        ).setAlpha(0.45);
+        ).setAlpha(0.85);
 
         const cx = this.cameras.main.centerX;
-        const cy = this.cameras.main.centerY;
 
-        this.add.text(cx, cy - 80, "PATADA AL RESCATE", {
-            fontSize: "36px",
-            color: "#ffffff",
-            fontStyle: "bold",
-            stroke: "#000000",
-            strokeThickness: 6
+        this.add.text(cx, 80, "GAME OVER", {
+            fontSize: "48px",
+            color: "#ff3333",
+            fontStyle: "bold"
         }).setOrigin(0.5);
 
-        const btnJugar = this.add.text(cx, cy + 20, "JUGAR", {
-            fontSize: "32px",
+        this.add.text(cx, 170, "Puntaje final: " + score, {
+            fontSize: "28px",
+            color: "#ffffff"
+        }).setOrigin(0.5);
+
+        this.add.text(cx, 215, "NPCs salvados: " + saved, {
+            fontSize: "24px",
+            color: "#aaffaa"
+        }).setOrigin(0.5);
+
+        const btnReiniciar = this.add.text(cx, 300, "🔄  REINICIAR", {
+            fontSize: "30px",
             color: "#ffffff",
-            backgroundColor: "#1a1a2e",
-            padding: { x: 30, y: 12 },
-            stroke: "#000000",
-            strokeThickness: 4
+            backgroundColor: "#333333",
+            padding: { x: 20, y: 10 }
         }).setOrigin(0.5).setInteractive({ useHandCursor: true });
 
-        btnJugar.on("pointerover", () => {
-            btnJugar.setStyle({ color: "#ffdd00" });
-        });
-        btnJugar.on("pointerout", () => {
-            btnJugar.setStyle({ color: "#ffffff" });
-        });
-        btnJugar.on("pointerdown", () => {
+        btnReiniciar.on("pointerover", () => btnReiniciar.setStyle({ color: "#ffff00" }));
+        btnReiniciar.on("pointerout",  () => btnReiniciar.setStyle({ color: "#ffffff" }));
+        btnReiniciar.on("pointerdown", () => {
+            this.registry.set("scoreTotal", 0);
+            this.registry.set("savedTotal", 0);
             this.scene.start("Nivel1");
+        });
+
+        const btnMenu = this.add.text(cx, 370, "MENÚ PRINCIPAL", {
+            fontSize: "30px",
+            color: "#ffffff",
+            backgroundColor: "#333333",
+            padding: { x: 20, y: 10 }
+        }).setOrigin(0.5).setInteractive({ useHandCursor: true });
+
+        btnMenu.on("pointerover", () => btnMenu.setStyle({ color: "#ffff00" }));
+        btnMenu.on("pointerout",  () => btnMenu.setStyle({ color: "#ffffff" }));
+        btnMenu.on("pointerdown", () => {
+            this.registry.set("scoreTotal", 0);
+            this.registry.set("savedTotal", 0);
+            this.scene.start("MainMenu");
         });
     }
 }

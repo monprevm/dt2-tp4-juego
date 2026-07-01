@@ -8,10 +8,10 @@ export class Preload extends Phaser.Scene {
 
         this.load.image(
             "bg",
-            "./assets/sprites/bg.png"
+            "./assets/images/bg.png"
         );
 
-        this.load.spritesheet("npc", "./assets/sprites/npc.png", 
+        this.load.spritesheet("npc", "./assets/images/npc.png", 
             {
             frameWidth: 64,   
             frameHeight: 64   
@@ -21,7 +21,7 @@ export class Preload extends Phaser.Scene {
 
         this.load.spritesheet(
             "maquinista",
-         "./assets/sprites/maquinista.png",
+         "./assets/images/maquinista.png",
           { 
             frameWidth: 64, 
             frameHeight: 64 
@@ -30,17 +30,17 @@ export class Preload extends Phaser.Scene {
 
         this.load.image(
             "debris",
-            "./assets/sprites/debris.png"
+            "./assets/images/debris.png"
         );
 
         this.load.image(
             "suelo",
-            "./assets/sprites/suelo.png"
+            "./assets/images/suelo.png"
         );
 
         this.load.spritesheet(
-            "robot",
-            "./assets/sprites/robot.png",
+            "player",
+            "./assets/images/player.png",
             {
                 frameWidth: 32,
                 frameHeight: 48
