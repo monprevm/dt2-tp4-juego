@@ -29,8 +29,8 @@ export class Preload extends Phaser.Scene {
         );
 
         this.load.image(
-            "debris",
-            "./assets/images/debris.png"
+            "bucket",
+            "./assets/images/bucket.png"
         );
 
         this.load.image(

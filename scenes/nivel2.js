@@ -162,7 +162,7 @@ export class Nivel2 extends Phaser.Scene {
 
         this.time.delayedCall(1000, () => {
             aviso.destroy();
-            const debris = this.debrisGroup.create(x, 0, "debris");
+            const debris = this.debrisGroup.create(x, 0, "bucket");
             debris.body.setSize(12, 12);
             debris.body.setOffset(2, 2);
             debris.setVelocityY(Phaser.Math.Between(150, 300));
@@ -205,10 +205,10 @@ export class Nivel2 extends Phaser.Scene {
         this.resetNPC();
     }
 
-    hitPlayer(player, debris) {
+    hitPlayer(player, bucket) {
         if (this.invulnerable) return;
 
-        debris.destroy();
+        bucket.destroy();
         this.vidas -= 1;
         this.vidasText.setText("Vidas: " + this.vidas);
 

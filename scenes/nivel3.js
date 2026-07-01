@@ -32,7 +32,7 @@ export class Nivel3 extends Phaser.Scene {
         this.vidasText = this.add.text(20, 110, "Vidas: " + this.vidas, { fontSize: "24px" });
 
         // Jugador
-        this.player = this.physics.add.sprite(400, 300, "player");
+        this.player = this.physics.add.sprite(400, 300, "robot");
         this.facing = "right";
         this.player.setFrame(4);
 
