@@ -1,7 +1,7 @@
-export class mainmenu extends Phaser.Scene {
+export class MainMenu extends Phaser.Scene {
 
     constructor() {
-        super("mainmenu");
+        super("MainMenu");
     }
 
     create() {
@@ -33,7 +33,7 @@ export class mainmenu extends Phaser.Scene {
         const cx = this.cameras.main.centerX;
         const cy = this.cameras.main.centerY;
 
-        this.add.text(cx, cy - 80, "¡CUIDADO CON LOS BALDES!", {
+        this.add.text(cx, cy - 80, "PATADA AL RESCATE", {
             fontSize: "36px",
             color: "#ffffff",
             fontStyle: "bold",
